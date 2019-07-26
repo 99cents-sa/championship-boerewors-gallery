@@ -14,7 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+        return view('events/index', compact('events'));
     }
 
     /**
@@ -35,7 +36,12 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'event_name' => 'required|max:255',
+        ]);
+        $event = Event::create($validatedData);
+   
+        return redirect('/events')->with('success', 'Event is successfully saved');
     }
 
     /**
