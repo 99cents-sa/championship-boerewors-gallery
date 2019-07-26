@@ -19,7 +19,8 @@ class ImageController extends Controller
     {
         //
 
-            return view('home');
+        $events = Event::all();
+        return view('events/index', compact('events'));
     }
 
     /**
@@ -44,7 +45,8 @@ class ImageController extends Controller
        
         $file = $request->file('event_image');
         $extension = $file->getClientOriginalExtension();
-        Storage::disk('public')->put($file->getFilename().'.'.$extension,  File::get($file));
+        Storage::disk('my_files')->put($file->getFilename().'.'.$extension,  File::get($file));
+        //$file->store('toPath', ['disk' => 'my_files']);
     
         $image = new Image();
         $image->event_id = $request->event_id;
@@ -53,7 +55,7 @@ class ImageController extends Controller
         $image->filename = $file->getFilename().'.'.$extension;
         $image->save();
     
-        return redirect()->route('images.index')
+        return redirect()->route('events.index')
             ->with('success','Image added successfully...');
     }
 
