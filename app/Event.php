@@ -8,4 +8,8 @@ class Event extends Model
 {
     //
     protected $fillable = ['event_name'];
+
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
 }
