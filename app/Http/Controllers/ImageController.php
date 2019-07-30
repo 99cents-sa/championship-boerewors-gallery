@@ -19,8 +19,10 @@ class ImageController extends Controller
     {
         //
 
-        $events = Event::all();
-        return view('events/index', compact('events'));
+        //$events = Event::all();
+        //return view('events/index', compact('events'));
+        $images = Image::all();
+        return view('images/index', compact('images'));
     }
 
     /**
@@ -32,6 +34,7 @@ class ImageController extends Controller
     {
         $items = Event::all(['id', 'event_name']);
         return view('images/create', compact('items',$items));
+        
     }
 
     /**
@@ -102,5 +105,9 @@ class ImageController extends Controller
     public function destroy(Image $image)
     {
         //
+    $image->delete();
+    return redirect()->route('images.index')
+    ->with('success','Image deleted successfully');
+        
     }
 }
