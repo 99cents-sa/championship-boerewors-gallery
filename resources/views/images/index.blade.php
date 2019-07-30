@@ -26,7 +26,10 @@
         <tr>
             <td>{{$image->id}}</td>
             <td>{{$image->filename}}</td>
-            <td><img class="img-responsive" src='http://ec2-54-161-60-4.compute-1.amazonaws.com/uploads/{{ $image->filename }}';/></td>
+            <td>
+           
+            <img class="img-responsive"  style="width: 150px; height: auto;" src='http://ec2-54-161-60-4.compute-1.amazonaws.com/uploads/{{ $image->filename }}';/>
+            </td>
            
             <td><a href="{{ route('images.edit',$image->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
