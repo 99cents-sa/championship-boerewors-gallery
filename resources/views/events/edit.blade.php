@@ -34,7 +34,7 @@
               <textarea class="form-control" rows="5" id="event_description" name="event_description">{{ $event->event_description }}</textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary">Create Event</button>
+          <button type="submit" class="btn btn-primary">Update Event</button>
       </form>
   </div>
 </div>
