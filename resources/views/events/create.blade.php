@@ -26,7 +26,7 @@
           </div>
 
           <div class="form-group">
-              @csrf
+              
               <label for="name">Event Description:</label>
               <textarea class="form-control" rows="5" id="event_description" name="event_description"></textarea>
           </div>

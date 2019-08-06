@@ -62,10 +62,21 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+
+    public function edit($id)
     {
-        //
+        $event = Event::find($id);
+
+        return view('events.edit', compact('event'));
     }
+
+   // public function edit(Event $event)
+   // {
+        //
+     //   $event = Event::find($event);
+       //dd($event);
+     //   return view('events.edit', compact('event'));
+   // }
 
     /**
      * Update the specified resource in storage.
@@ -74,10 +85,34 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
-    {
+    //public function update(Request $request, Event $event)
+    //{
         //
-    }
+
+      //  $validatedData = $request->validate([
+           // 'event_name' => 'required|max:255',
+            //'event_description' => 'required',
+      //  ]);
+
+
+    
+         // return redirect('/events')->with('success', 'Event is successfully updated');
+   // }
+
+   public function update(Request $request, $id)
+{
+      $request->validate([
+        'event_name' => 'required|max:255',
+        'event_description' => 'required',
+      ]);
+
+      $event = Event::find($id);
+      $event->event_name = $request->get('event_name');
+      $event->event_description = $request->get('event_description');
+      $event->save();
+
+      return redirect('/events')->with('success', 'Event is successfully updated');
+}
 
     /**
      * Remove the specified resource from storage.
