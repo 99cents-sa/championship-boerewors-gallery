@@ -16,6 +16,8 @@
         <tr>
           <td>ID</td>
           <td>Event Name</td>
+          <td>Event Description</td>
+        
          
           <td colspan="2">Action</td>
         </tr>
@@ -25,6 +27,7 @@
         <tr>
             <td>{{$event->id}}</td>
             <td>{{$event->event_name}}</td>
+            <td>{{$event->event_description}}</td>
            
             <td><a href="{{ route('events.edit',$event->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
