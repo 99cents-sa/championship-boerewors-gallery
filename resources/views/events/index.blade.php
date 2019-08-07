@@ -30,6 +30,7 @@
             <td>{{$event->event_description}}</td>
            
             <td><a href="{{ route('events.edit',$event->id)}}" class="btn btn-primary">Edit</a></td>
+
             <td>
                 <form action="{{ route('events.destroy', $event->id)}}" method="post">
                   @csrf
@@ -37,6 +38,7 @@
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+          
         </tr>
         @endforeach
     </tbody>
